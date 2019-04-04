@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onResponse(String response) {
                             responseString = response;
                             try {
+                                // this is the web url that we use to send unique token to given email id
+                                // here error 
                                 JSONObject jsonObject = new JSONObject(responseString);
                                 if (jsonObject.getBoolean("status")) {
                                     final View verifyDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_pop_up, null);
