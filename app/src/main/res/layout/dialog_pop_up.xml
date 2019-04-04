@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/solid_round_corner_white"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner"
+            android:gravity="center"
+            android:id="@+id/codeEdit"
+            android:hint="Please enter code"
+            android:padding="16dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/verifyButton"
+            android:background="@drawable/solid_round_corner"
+            android:text="Verify"
+            android:textColor="@color/whiteColor" />
+    </LinearLayout>
+</LinearLayout>

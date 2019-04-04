@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SimpleAuthentication</string>
+    <string name="title_activity_result">Result</string>
+</resources>
