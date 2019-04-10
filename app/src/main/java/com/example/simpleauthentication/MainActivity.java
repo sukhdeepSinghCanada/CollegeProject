@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dialog = new ProgressDialog(MainActivity.this);
-        EventBus.getDefault().register(this);
         getView();
         setListeners();
     }
@@ -110,8 +108,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onResponse(String response) {
                             responseString = response;
                             try {
-                                // this is the web url that we use to send unique token to given email id
-                                // here error 
                                 JSONObject jsonObject = new JSONObject(responseString);
                                 if (jsonObject.getBoolean("status")) {
                                     final View verifyDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_pop_up, null);
@@ -124,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     verifyButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+                                            verifyDialogLayout.cancel();
                                             new SubmitTheCode("http://devs-services.000webhostapp.com/services/apis.php?verifyUserToken", MainActivity.this).execute();
                                         }
                                     });
@@ -192,9 +189,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             responseString = response;
                             try {
                                 JSONObject jsonObject = new JSONObject(responseString);
+
                                 if (jsonObject.getBoolean("status")) {
                                     Toast.makeText(MainActivity.this, "Verification Successfull", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(MainActivity.this, ResultActivity.class).putExtra("email", enterEmail.getText().toString()));
+                                }else{
+                                    Toast.makeText(MainActivity.this, "Verification failed", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

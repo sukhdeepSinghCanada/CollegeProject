@@ -15,6 +15,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        closeButton = findViewById(R.id.closeButton);
         emailText = getIntent().getStringExtra("email");
         getView();
         setListeners();
